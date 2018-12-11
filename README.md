@@ -3,6 +3,11 @@ Papertrail Archives Downloader
 
 Support concurrently downloading multiple archives `-n`, local timezone `-l` (defalt UTC) and only hourly format (not daily).
 
+## Install
+```
+go get -u github.com/giraffate/ptad
+```
+
 ## Usage
 After setting Papertrail API token, run the following command (local timezone `JST`),
 ```
