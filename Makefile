@@ -1,7 +1,7 @@
 build:
 	go build
 
-gox:
-	gox -arch="amd64" -os="darwin" -output "pkg/{{.Dir}}_{{.OS}}_{{.Arch}}"
+crossbuild:
+	goxz -pv=v0.0.1 -os=darwin -d=pkg
 
-.PHONY: build gox
+.PHONY: build crossbuild
