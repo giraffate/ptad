@@ -1,11 +1,17 @@
 # ptad
 Papertrail Archives Downloader
 
-Support concurrently downloading multiple archives `-n`, local timezone `-l` (defalt UTC) and only hourly format (not daily).
+Support concurrent downloading multiple archives `-n`, local timezone `-l` (defalt UTC) and only hourly format (not daily).
 
 ## Install
+Use `go get`,
 ```
 go get -u github.com/giraffate/ptad
+```
+or use `brew`,
+```
+brew tap giraffate/ptad
+brew install ptad
 ```
 
 ## Usage
