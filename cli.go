@@ -24,7 +24,7 @@ type CLI struct {
 // Debugf prints debug output.
 func Debugf(format string, args ...interface{}) {
 	if env := os.Getenv(EnvDebug); len(env) > 0 {
-		log.Printf("[DEBUG] "+format+"\n", args)
+		log.Printf("[DEBUG] "+format+"\n", args...)
 	}
 }
 
@@ -48,7 +48,7 @@ func (cli *CLI) Run(args []string) int {
 	flags.BoolVar(&local, "l", false, "")
 
 	if err := flags.Parse(args[1:]); err != nil {
-		log.Print(err)
+		log.Printf("[ERROR] %v", err)
 		return 1
 	}
 
@@ -60,11 +60,13 @@ func (cli *CLI) Run(args []string) int {
 
 	parsedArgs := flags.Args()
 	if len(parsedArgs) < 1 {
+		log.Println("[ERROR] No arguments found")
 		return 1
 	}
 
 	t, err := time.ParseInLocation(TimeFormat, parsedArgs[0], time.Local)
 	if err != nil {
+		log.Printf("[ERROR] %v", err)
 		return 1
 	}
 	if local {
@@ -80,7 +82,8 @@ func (cli *CLI) Run(args []string) int {
 
 			formattedTime := t.Add(time.Duration(i) * time.Hour).Format("2006-01-02-15")
 			if err := client.DownloadArchive(formattedTime); err != nil {
-				log.Fatal(err)
+				log.Printf("[ERROR] %v", err)
+				return
 			}
 			Debugf("Completed: %s", formattedTime)
 		}(i)
