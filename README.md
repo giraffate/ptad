@@ -1,7 +1,9 @@
 # ptad
-Papertrail Archives Downloader
+Papertrail Archives Downloader (ptad) download log archives.
 
-Support concurrent downloading multiple archives `-n`, local timezone `-l` (defalt UTC) and only hourly format (not daily).
+Support concurrent downloading multiple log archives `-n`, local timezone `-l` (defalt UTC) and only hourly format (not daily).
+
+Details: https://help.papertrailapp.com/kb/how-it-works/permanent-log-archives#show-similar-messages
 
 ## Install
 Use `go get`,
